@@ -1,0 +1,39 @@
+[env]
+TERM = "xterm-256color"
+
+[general]
+import = [
+    "~/.config/alacritty/themes/themes/coolnight.toml"
+]
+[window]
+title = "Alacritty"
+dynamic_title = true
+padding.x = 10
+padding.y = 10
+decorations = "Buttonless"
+opacity = 0.8
+blur = true
+option_as_alt = "Both"
+
+
+[font]
+size = 20.0
+normal.family = "MesloLGS Nerd Font Mono"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.offset]
+x = 0
+y = 0
+
+[scrolling]
+history = 100000
+multiplier = 3
+
+[keyboard]
+bindings = [
+  { key = "Left", mods = "Alt", chars = "\u001bb" },
+  { key = "Right", mods = "Alt", chars = "\u001bf" },
+]
