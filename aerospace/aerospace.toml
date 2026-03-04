@@ -1,0 +1,177 @@
+after-login-command = []
+
+after-startup-command = [
+    'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar',
+    'exec-and-forget /opt/homebrew/opt/borders/bin/borders active_color="glow(0xa020f0ff)" inactive_color=0x20494d64 width=8.0'
+]
+
+exec-on-workspace-change = [
+    '/bin/bash',
+    '-c',
+    '/opt/homebrew/opt/sketchybar/bin/sketchybar --trigger aerospace_workspace_change AEROSPACE_FOCUSED_WORKSPACE=$AEROSPACE_FOCUSED_WORKSPACE AEROSPACE_PREV_WORKSPACE=$AEROSPACE_PREV_WORKSPACE',
+]
+
+start-at-login = true
+
+enable-normalization-flatten-containers = false
+enable-normalization-opposite-orientation-for-nested-containers = false
+
+accordion-padding = 0
+
+default-root-container-layout = 'tiles'
+
+default-root-container-orientation = 'auto'
+
+key-mapping.preset = 'qwerty'
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+on-focus-changed = ['move-mouse window-lazy-center']
+
+# Промежутки между окнами (inner-*) и между краями монитора (outer-*).
+# Возможные значения:
+# - Постоянная:     gaps.outer.top = 8
+# - Для монитора:   gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
+#                  В этом примере 24 - это значение по умолчанию, когда нет совпадений.
+#                  Шаблон монитора такой же, как для 'workspace-to-monitor-force-assignment'.
+#                  См.: https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
+# 
+[workspace-to-monitor-force-assignment]
+# 1 = 'main'
+# 2 = 'main'
+# 3 = 'main'
+# 4 = 'main'
+# 5 = 'main'
+6 = 2
+7 = 2
+8 = 2
+9 = 2
+10 = 2
+
+[gaps]
+inner.horizontal = 20
+inner.vertical = 10
+outer.top = [{ monitor."main" = 40 }, 40]
+outer.left = 15
+outer.bottom = 15
+outer.right = 15
+
+[exec]
+inherit-env-vars = true
+
+[exec.env-vars]
+PATH = '/opt/homebrew/bin:/opt/homebrew/sbin:${PATH}'
+
+[mode.main.binding]
+
+alt-slash = 'layout tiles horizontal vertical'
+alt-comma = 'layout accordion horizontal vertical'
+
+alt-h = 'focus left --boundaries all-monitors-outer-frame'
+alt-j = 'focus down --boundaries all-monitors-outer-frame'
+alt-k = 'focus up --boundaries all-monitors-outer-frame'
+alt-l = 'focus right --boundaries all-monitors-outer-frame'
+
+alt-shift-h = 'move left'
+alt-shift-j = 'move down'
+alt-shift-k = 'move up'
+alt-shift-l = 'move right'
+
+alt-shift-minus = 'resize smart -50'
+alt-shift-equal = 'resize smart +50'
+
+alt-1 = 'workspace 1'
+alt-2 = 'workspace 2'
+alt-3 = 'workspace 3'
+alt-4 = 'workspace 4'
+alt-5 = 'workspace 5'
+alt-6 = 'workspace 6'
+alt-7 = 'workspace 7'
+alt-8 = 'workspace 8'
+alt-9 = 'workspace 9'
+alt-0 = 'workspace 10'
+
+alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+alt-shift-5 = ['move-node-to-workspace 5', 'workspace 5']
+alt-shift-6 = ['move-node-to-workspace 6', 'workspace 6']
+alt-shift-7 = ['move-node-to-workspace 7', 'workspace 7']
+alt-shift-8 = ['move-node-to-workspace 8', 'workspace 8']
+alt-shift-9 = ['move-node-to-workspace 9', 'workspace 9']
+alt-shift-0 = ['move-node-to-workspace 10', 'workspace 10']
+
+alt-tab = 'workspace-back-and-forth'
+alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+alt-shift-semicolon = 'mode service'
+
+[mode.service.binding]
+esc = [
+'reload-config', 
+'mode main',
+'exec-and-forget /opt/homebrew/opt/sketchybar/bin/sketchybar',
+'exec-and-forget /opt/homebrew/opt/borders/bin/borders active_color="glow(0xa020f0ff)" inactive_color=0x20494d64 width=8.0']
+r = ['flatten-workspace-tree', 'mode main']
+f = [
+    'layout floating tiling',
+    'mode main',
+]
+alt-shift-semicolon = [
+    'fullscreen',
+    'mode main',
+]
+backspace = ['close-all-windows-but-current', 'mode main']
+
+alt-shift-h = ['join-with left', 'mode main']
+alt-shift-j = ['join-with down', 'mode main']
+alt-shift-k = ['join-with up', 'mode main']
+alt-shift-l = ['join-with right', 'mode main']
+
+
+[[on-window-detected]]
+if.app-id = 'org.alacritty'
+run = ['move-node-to-workspace 1']
+
+[[on-window-detected]]
+if.app-id = 'app.zen-browser.zen'
+run = ['move-node-to-workspace 2']
+
+[[on-window-detected]]
+if.app-id = 'com.microsoft.VSCode'
+run = ['move-node-to-workspace 3']
+
+[[on-window-detected]]
+if.app-id = 'ru.keepcoder.Telegram'
+run = ['move-node-to-workspace 4']
+
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = ['move-node-to-workspace 5']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.weather'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'dev.yiguo.FoXray'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'ru.yandex.desktop.disk2'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'ru.yandex.desktop.disk.screenshots'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'net.ankiweb.dtop'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'org.m0k.transmission'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = ['layout floating']
