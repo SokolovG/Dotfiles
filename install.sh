@@ -3,6 +3,9 @@ set -euo pipefail
 
 DOTFILES="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+# base packages
+command -v apt-get >/dev/null && apt-get update && apt-get install -y zsh eza bat ripgrep tmux fzf xclip git curl
+
 # oh-my-zsh
 [ -d "$HOME/.oh-my-zsh" ] || sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 
