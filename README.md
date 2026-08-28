@@ -8,7 +8,7 @@ Personal macOS setup.
 - `aerospace/` — [AeroSpace](https://github.com/nikitabobko/AeroSpace) tiling window manager config
 - `sketchybar/` — [sketchybar](https://github.com/FelixKratz/SketchyBar) status bar config, based on [TheGoldenPatrik1/sketchybar-config](https://github.com/TheGoldenPatrik1/sketchybar-config), adapted to talk to AeroSpace instead of yabai (workspace switching, active-workspace highlight, per-workspace app icons)
 - `alacritty/` — terminal emulator config
-- `nvim/` — Neovim config
+- `nvim/` — Neovim config, based on [NvChad](https://github.com/NvChad/NvChad) (starter template)
 - `tmux/` — tmux config
 
 ## Install
